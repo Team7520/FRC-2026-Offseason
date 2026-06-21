@@ -4,6 +4,21 @@
 
 package frc.robot;
 
+// import com.ctre.phoenix6.hardware.CANcoder;
+// import com.ctre.phoenix6.StatusSignal;
+// import com.ctre.phoenix6.signals.SensorDirectionValue;
+// import com.ctre.phoenix6.configs.CANcoderConfiguration;
+// import com.ctre.phoenix6.configs.CANcoderConfigurator;
+// import com.ctre.phoenix6.configs.MagnetSensorConfigs;
+// import edu.wpi.first.math.util.Units;
+// import edu.wpi.first.units.measure.Angle;
+
+import com.ctre.phoenix6.configs.CANcoderConfiguration;
+import com.ctre.phoenix6.configs.CANcoderConfigurator;
+import com.ctre.phoenix6.configs.MagnetSensorConfigs;
+import com.ctre.phoenix6.hardware.CANcoder;
+import com.ctre.phoenix6.signals.SensorDirectionValue;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.Timer;
@@ -25,6 +40,8 @@ public class Robot extends TimedRobot
 
   private Timer disabledTimer;
 
+  // private CANcoder    absoluteEncoder;
+
   public Robot()
   {
     instance = this;
@@ -41,6 +58,13 @@ public class Robot extends TimedRobot
   @Override
   public void robotInit()
   {
+    // absoluteEncoder = new CANcoder(/* Change this to the CAN ID of the CANcoder */ 23);
+    // CANcoderConfigurator cfg = absoluteEncoder.getConfigurator();
+    // cfg.apply(new CANcoderConfiguration());
+    // MagnetSensorConfigs  magnetSensorConfiguration = new MagnetSensorConfigs();
+    // cfg.refresh(magnetSensorConfiguration);
+    // cfg.apply(magnetSensorConfiguration
+                  // .withSensorDirection(SensorDirectionValue.CounterClockwise_Positive));
     // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
     // autonomous chooser on the dashboard.
     m_robotContainer = new RobotContainer();
@@ -65,6 +89,9 @@ public class Robot extends TimedRobot
   @Override
   public void robotPeriodic()
   {
+    // StatusSignal<Angle> angle = absoluteEncoder.getAbsolutePosition().waitForUpdate(0.1);
+
+    // System.out.println("Absolute Encoder Angle (degrees): " + Units.rotationsToDegrees(angle.getValueAsDouble()));
     // Runs the Scheduler.  This is responsible for polling buttons, adding newly-scheduled
     // commands, running already-scheduled commands, removing finished or interrupted commands,
     // and running subsystem periodic() methods.  This must be called from the robot's periodic
